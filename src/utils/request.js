@@ -3,6 +3,8 @@ import { notification } from 'antd';
 import { routerRedux } from 'dva/router';
 import store from '../index';
 
+const baseApi = 'https://cshun-docking.dev.idx0.me';
+
 const codeMessage = {
   200: '服务器成功返回请求的数据。',
   201: '新建或修改数据成功。',
@@ -25,9 +27,11 @@ function checkStatus(response) {
     return response;
   }
   const errortext = codeMessage[response.status] || response.statusText;
-  notification.error({
-    message: `请求错误 ${response.status}: ${response.url}`,
-    description: errortext,
+  response.text().then(text => {
+    notification.error({
+      message: `请求错误 ${response.status}: ${response.url}`,
+      description: `${errortext}\n${text}`,
+    });
   });
   const error = new Error(errortext);
   error.name = response.status;
@@ -44,7 +48,12 @@ function checkStatus(response) {
  */
 export default function request(url, options) {
   const defaultOptions = {
-    credentials: 'include',
+    // credentials: 'include',
+    headers: {
+      accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('cshun-authority-token') || 'guest'}`,
+    },
   };
   const newOptions = { ...defaultOptions, ...options };
   if (
@@ -68,7 +77,7 @@ export default function request(url, options) {
     }
   }
 
-  return fetch(url, newOptions)
+  return fetch(baseApi + url, newOptions)
     .then(checkStatus)
     .then(response => {
       if (newOptions.method === 'DELETE' || response.status === 204) {

@@ -60,10 +60,16 @@ export async function queryFakeList(params) {
   return request(`/api/fake_list?${stringify(params)}`);
 }
 
-export async function fakeAccountLogin(params) {
-  return request('/api/login/account', {
+export async function realAccountLogin(params) {
+  return request('/login/', {
     method: 'POST',
     body: params,
+  });
+}
+
+export async function realAccountCheckPermission() {
+  return request('/me/', {
+    method: 'GET',
   });
 }
 

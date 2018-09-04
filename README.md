@@ -1,3 +1,13 @@
+# cshun-manage-system
+
+```
+yarn install
+yarn start:no-proxy
+```
+
+
+---
+
 [Русский](./README.ru-RU.md) | English | [简体中文](./README.zh-CN.md)
 
 # Ant Design Pro

@@ -11,23 +11,13 @@ const links = [
   {
     key: 'help',
     title: '帮助',
-    href: '',
-  },
-  {
-    key: 'privacy',
-    title: '隐私',
-    href: '',
-  },
-  {
-    key: 'terms',
-    title: '条款',
-    href: '',
+    href: 'http://www.bupt.edu.cn/',
   },
 ];
 
 const copyright = (
   <Fragment>
-    Copyright <Icon type="copyright" /> 2018 蚂蚁金服体验技术部出品
+    Copyright <Icon type="copyright" /> 北京邮电大学 计算机学院
   </Fragment>
 );
 
@@ -59,11 +49,11 @@ class UserLayout extends React.PureComponent {
             <div className={styles.top}>
               <div className={styles.header}>
                 <Link to="/">
-                  <img alt="logo" className={styles.logo} src={logo} />
-                  <span className={styles.title}>Ant Design</span>
+                  {/* <img alt="logo" className={styles.logo} src={logo} /> */}
+                  <span className={styles.title}>长顺后台管理系统</span>
                 </Link>
               </div>
-              <div className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</div>
+              <div className={styles.desc}>用户、种类管理和生产登记</div>
             </div>
             <Switch>
               {getRoutes(match.path, routerData).map(item => (

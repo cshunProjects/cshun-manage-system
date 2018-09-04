@@ -60,6 +60,14 @@ export async function queryFakeList(params) {
   return request(`/api/fake_list?${stringify(params)}`);
 }
 
+export async function queryUserList(params) {
+  // return request('/users/', {
+  //   method: 'GET',
+  //   body: params,
+  // });
+  return request(`/users?${stringify(params)}`);
+}
+
 export async function realAccountLogin(params) {
   return request('/login/', {
     method: 'POST',

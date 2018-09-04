@@ -91,6 +91,12 @@ function findMenuKey(menuData, path) {
 
 export const getRouterData = app => {
   const routerConfig = {
+    '/manage/user': {
+      component: dynamicWrapper(app, ['cshunUser'], () => import('../routes/Manage/User')),
+    },
+    '/manage/type': {
+      component: dynamicWrapper(app, ['list'], () => import('../routes/Manage/Type')),
+    },
     '/': {
       component: dynamicWrapper(app, ['user', 'login'], () => import('../layouts/BasicLayout')),
     },

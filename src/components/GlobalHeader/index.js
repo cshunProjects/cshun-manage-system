@@ -72,12 +72,14 @@ export default class GlobalHeader extends PureComponent {
       <Menu className={styles.menu} selectedKeys={[]} onClick={onMenuClick}>
         <Menu.Item disabled>
           <Icon type="user" />
-          个人中心
+          等级： { currentUser.adminLevel } <br />
+          乡镇： { currentUser.town } <br />
+          街道： { currentUser.street } <br />
         </Menu.Item>
-        <Menu.Item disabled>
+        {/* <Menu.Item disabled>
           <Icon type="setting" />
           设置
-        </Menu.Item>
+        </Menu.Item> */}
         <Menu.Item key="triggerError">
           <Icon type="close-circle" />
           触发报错
@@ -104,7 +106,7 @@ export default class GlobalHeader extends PureComponent {
           onClick={this.toggle}
         />
         <div className={styles.right}>
-          <HeaderSearch
+          {/* <HeaderSearch
             className={`${styles.action} ${styles.search}`}
             placeholder="站内搜索"
             dataSource={['搜索提示一', '搜索提示二', '搜索提示三']}
@@ -114,18 +116,18 @@ export default class GlobalHeader extends PureComponent {
             onPressEnter={value => {
               console.log('enter', value); // eslint-disable-line
             }}
-          />
+          /> */}
           <Tooltip title="使用文档">
             <a
               target="_blank"
-              href="http://pro.ant.design/docs/getting-started"
+              href="http://www.bupt.edu.cn/"
               rel="noopener noreferrer"
               className={styles.action}
             >
               <Icon type="question-circle-o" />
             </a>
           </Tooltip>
-          <NoticeIcon
+          {/* <NoticeIcon
             className={styles.action}
             count={currentUser.notifyCount}
             onItemClick={(item, tabProps) => {
@@ -154,11 +156,11 @@ export default class GlobalHeader extends PureComponent {
               emptyText="你已完成所有待办"
               emptyImage="https://gw.alipayobjects.com/zos/rmsportal/HsIsxMZiWKrNUavQUXqx.svg"
             />
-          </NoticeIcon>
+          </NoticeIcon> */}
           {currentUser.name ? (
             <Dropdown overlay={menu}>
               <span className={`${styles.action} ${styles.account}`}>
-                <Avatar size="small" className={styles.avatar} src={currentUser.avatar} />
+                {/* <Avatar size="small" className={styles.avatar} src={currentUser.avatar} /> */}
                 <span className={styles.name}>{currentUser.name}</span>
               </span>
             </Dropdown>
